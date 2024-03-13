@@ -1,0 +1,21 @@
+\begin{document}
+Para provar que o teorema de Tychonoff em sua versão geral implica o axioma da escolha, estabelecemos que todo produto cartesiano infinito de conjuntos não vazios é não vazio. A parte mais complicada da prova é introduzir a topologia correta. A topologia correta, como se verifica, é a topologia cofinita com um pequeno ajuste. Acontece que todo conjunto dado essa topologia automaticamente se torna um espaço compacto. Uma vez que temos esse fato, o teorema de Tychonoff pode ser aplicado; em seguida, usamos a definição de propriedade de interseção finita (FIP) de compacidade. A prova em si (devido a J. L. Kelley) segue:
+
+Seja $\{A_i\}$ uma família indexada de conjuntos não vazios, para $i$ variando em $I$ (onde $I$ é um conjunto de indexação arbitrário). Queremos mostrar que o produto cartesiano desses conjuntos é não vazio. Agora, para cada $i$, tome $X_i$ para ser $A_i$ com o próprio índice $i$ anexado (renomeando os índices usando a união disjunta, se necessário, podemos supor que $i$ não é um membro de $A_i$, então simplesmente tome $X_i = A_i \cup \{i\}$).
+
+Agora defina o produto cartesiano
+$$
+X = \prod_{i \in I} X_i
+$$
+junto com os mapas de projeção natural $\pi_i$ que levam um membro de $X$ ao seu termo $i$.
+
+Damos a cada $X_j$ a topologia cujos conjuntos abertos são: o conjunto vazio, o singleton $\{i\}$, o conjunto $X_i$. Isso torna $X_i$ compacto, e pelo teorema de Tychonoff, $X$ também é compacto (na topologia do produto). Os mapas de projeção são contínuos; todos os $A_i$'s são fechados, sendo complementos do conjunto aberto singleton $\{i\}$ em $X_i$. Então as imagens inversas $\pi_i^{-1}(A_i)$ são subconjuntos fechados de $X$. Notamos que
+$$
+\prod_{i \in I} A_i = \bigcap_{i \in I} \pi_i^{-1}(A_i)
+$$
+e provamos que essas imagens inversas têm o FIP. Sejam $i_1, ..., i_N$ uma coleção finita de índices em $I$. Então o produto finito $A_{i_1} \times ... \times A_{i_N}$ é não vazio (apenas finitamente muitas escolhas aqui, então AC não é necessário); consiste apenas de $N$-uplas. Seja $a = (a_1, ..., a_N)$ tal $N$-upla. Estendemos $a$ para todo o conjunto de índices: leve $a$ para a função $f$ definida por $f(j) = a_k$ se $j = i_k$, e $f(j) = j$ caso contrário. Esta etapa é onde a adição do ponto extra a cada espaço é crucial, pois nos permite definir $f$ para tudo fora da $N$-upla de uma maneira precisa sem escolhas (já podemos escolher, por construção, $j$ de $X_j$). $\pi_{i_k}(f) = a_k$ é obviamente um elemento de cada $A_{i_k}$ de modo que $f$ está em cada imagem inversa; assim temos
+$$
+\bigcap_{k=1}^{N} \pi_{i_k}^{-1}(A_{i_k}) \neq \varnothing.
+$$
+Pela definição FIP de compacidade, a interseção inteira sobre $I$ deve ser não vazia, e a prova está completa.
+\end{document}

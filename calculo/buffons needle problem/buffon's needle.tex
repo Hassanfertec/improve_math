@@ -1,0 +1,85 @@
+**Aprimoramento da Explicação do Problema**
+
+O problema propõe a seguinte questão: se uma agulha de comprimento `l` é lançada em um plano com linhas paralelas espaçadas por `t` unidades, qual é a probabilidade de que a agulha cruze uma linha ao cair?
+
+Vamos definir `x` como a distância do centro da agulha à linha paralela mais próxima e `θ` como o ângulo agudo entre a agulha e uma das linhas paralelas.
+
+A função densidade de probabilidade (FDP) uniforme de `x` entre 0 e `t/2` é
+
+$$
+f_{X}(x) = 
+\begin{cases} 
+\frac{2}{t} & : 0 \leq x \leq \frac{t}{2} \\
+0 & : \text{em outros casos}
+\end{cases}
+$$
+
+Aqui, `x = 0` representa uma agulha que está centrada diretamente em uma linha, e `x = t/2` representa uma agulha que está perfeitamente centrada entre duas linhas. A FDP uniforme assume que a agulha tem a mesma probabilidade de cair em qualquer lugar neste intervalo, mas não poderia cair fora dele.
+
+A função densidade de probabilidade uniforme de `θ` entre 0 e `π/2` é
+
+$$
+f_{\Theta}(\theta) = 
+\begin{cases} 
+\frac{2}{\pi} & : 0 \leq \theta \leq \frac{\pi}{2} \\
+0 & : \text{em outros casos}
+\end{cases}
+$$
+
+Aqui, `θ = 0` representa uma agulha que está paralela às linhas marcadas, e `θ = π/2` radianos representa uma agulha que está perpendicular às linhas marcadas. Qualquer ângulo dentro deste intervalo é considerado um resultado igualmente provável.
+
+As duas variáveis aleatórias, `x` e `θ`, são independentes, então a função densidade de probabilidade conjunta é o produto
+
+$$
+f_{X,\Theta}(x,\theta) = 
+\begin{cases} 
+\frac{4}{t\pi} & : 0 \leq x \leq \frac{t}{2},\ 0 \leq \theta \leq \frac{\pi}{2} \\
+0 & : \text{em outros casos}
+\end{cases}
+$$
+
+A agulha cruza uma linha se
+
+$$
+x \leq \frac{l}{2} \sin \theta.
+$$
+
+Agora existem dois casos.
+
+**Caso 1: Agulha curta (`l ≤ t`)**
+
+Integrando a função densidade de probabilidade conjunta, obtemos a probabilidade de que a agulha cruze uma linha:
+
+$$
+P = \int_{\theta=0}^{\frac{\pi}{2}} \int_{x=0}^{\frac{l}{2}\sin\theta} \frac{4}{t\pi} dx d\theta = \frac{2l}{t\pi}.
+$$
+
+**Caso 2: Agulha longa (`l > t`)**
+
+Suponha que `l > t`. Neste caso, integrando a função densidade de probabilidade conjunta, obtemos:
+
+$$
+\int_{\theta=0}^{\frac{\pi}{2}} \int_{x=0}^{m(\theta)} \frac{4}{t\pi} dx d\theta,
+$$
+
+onde `m(θ)` é o mínimo entre `l/2 sin θ` e `t/2`.
+
+Assim, realizando a integração acima, vemos que, quando `l > t`, a probabilidade de que a agulha cruze pelo menos uma linha é
+
+$$
+P = \frac{2l}{t\pi} - \frac{2}{t\pi} \left(\sqrt{l^{2}-t^{2}}+t\arcsin \frac{t}{l}\right) + 1
+$$
+
+ou
+
+$$
+P = \frac{2}{\pi} \arccos \frac{t}{l} + \frac{2}{\pi} \cdot \frac{l}{t} \left(1-\sqrt{1-\left(\frac{t}{l}\right)^{2}}\right).
+$$
+
+Na segunda expressão, o primeiro termo representa a probabilidade do ângulo da agulha ser tal que ela sempre cruzará pelo menos uma linha. O termo à direita representa a probabilidade de que a agulha caia em um ângulo onde sua posição importa, e ela cruza a linha.
+
+Alternativamente, observe que sempre que `θ` tem um valor tal que `l sin θ ≤ t`, ou seja, no intervalo `0 ≤ θ ≤ arcsin t/l`, a probabilidade de cruzamento é a mesma que no caso da agulha curta. No entanto, se `l sin θ > t`, ou seja, `arcsin t/l < θ ≤ π/2` a probabilidade é constante e é igual a 1.
+
+$$
+P = \left(\int_{\theta=0}^{\arcsin \frac{t}{l}} \int_{x=0}^{\frac{l}{2}\sin\theta} \frac{4}{t\pi}\right) + \left(\int_{\arcsin \frac{t}{l}}^{\frac{\pi}{2}} \frac{2}{\pi}\right) = \frac{2l}{t\pi} - \frac{2}{t\pi} \left(\sqrt{l^{2}-t^{2}}+t\arcsin \frac{t}{l}\right) + 1
+$$

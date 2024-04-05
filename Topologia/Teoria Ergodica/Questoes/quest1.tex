@@ -1,0 +1,32 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amsthm}
+
+\newtheorem{theorem}{Teorema}
+\newtheorem{question}{Questão}
+
+\begin{document}
+
+\begin{question}
+Considere um sistema dinâmico discreto $(X, \mathcal{F}, \mu, T)$, onde $(X, \mathcal{F}, \mu)$ é um espaço de medida de probabilidade e $T: X \rightarrow X$ é uma transformação mensurável que preserva a medida $\mu$, ou seja, $\mu(T^{-1}(A)) = \mu(A)$ para todo $A \in \mathcal{F}$. Prove o Teorema Ergódico de Birkhoff:
+
+Seja $f \in L^1(\mu)$ uma função integrável. Então, a média temporal
+\[\frac{1}{n}\sum_{k=0}^{n-1} f \circ T^k\]
+converge quase certamente quando $n \rightarrow \infty$ para a média espacial $\int f d\mu$.
+\end{question}
+
+\begin{proof}
+Primeiro, vamos definir a média temporal de $f$ até o tempo $n$ como $A_n f := \frac{1}{n}\sum_{k=0}^{n-1} f \circ T^k$. Queremos mostrar que $A_n f$ converge quase certamente para $\int f d\mu$ quando $n \rightarrow \infty$.
+
+Para isso, vamos usar o Teorema da Convergência Dominada de Lebesgue. Primeiro, observe que $|A_n f| \leq \frac{1}{n}\sum_{k=0}^{n-1} |f \circ T^k| \leq ||f||_{\infty}$, onde $||f||_{\infty}$ é a norma do supremo de $f$. Portanto, $A_n f$ é dominada por uma função integrável.
+
+Agora, vamos mostrar que $A_n f$ converge em média para $\int f d\mu$. De fato, temos que
+
+\[\int A_n f d\mu = \int \frac{1}{n}\sum_{k=0}^{n-1} f \circ T^k d\mu = \frac{1}{n}\sum_{k=0}^{n-1} \int f \circ T^k d\mu = \frac{1}{n}\sum_{k=0}^{n-1} \int f d\mu = \int f d\mu,\]
+
+onde a segunda igualdade segue da invariância da medida $\mu$ sob a transformação $T$.
+
+Portanto, pelo Teorema da Convergência Dominada de Lebesgue, temos que $A_n f$ converge quase certamente para $\int f d\mu$ quando $n \rightarrow \infty$. Isso completa a prova do Teorema Ergódico de Birkhoff.
+\end{proof}
+
+\end{document}

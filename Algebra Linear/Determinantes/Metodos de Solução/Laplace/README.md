@@ -1,0 +1,68 @@
+# Teorema
+
+Suponha que $$B$$ seja uma matriz $$n \times n$$ e $$i,j \in \{1,2,\dots ,n\}$$. Para clareza, também rotulamos as entradas de $$B$$ que compõem sua matriz menor $$i,j$$, denotada por $$M_{ij}$$, como $$(a_{st})$$ para $$1 \leq s,t \leq n-1$$.
+
+Considere os termos na expansão de $$|B|$$ que têm $$b_{ij}$$ como um fator. Cada um tem a forma
+
+$$
+\operatorname{sgn} \tau \, b_{1,\tau (1)}\cdots b_{i,j}\cdots b_{n,\tau (n)} = \operatorname{sgn} \tau \, b_{ij} a_{1,\sigma (1)}\cdots a_{n-1,\sigma (n-1)}
+$$
+
+para alguma permutação $$\tau \in S_n$$ com $$\tau (i) = j$$, e uma permutação única e evidentemente relacionada $$\sigma \in S_{n-1}$$ que seleciona as mesmas entradas menores que $$\tau$$. Da mesma forma, cada escolha de $$\sigma$$ determina um $$\tau$$ correspondente, ou seja, a correspondência $$\sigma \leftrightarrow \tau$$ é uma bijeção entre $$S_{n-1}$$ e $$\{\tau \in S_{n}: \tau (i) = j\}$$. Usando a notação de duas linhas de Cauchy, a relação explícita entre $$\tau$$ e $$\sigma$$ pode ser escrita como
+
+$$
+\sigma = \begin{pmatrix} 1 & 2 & \cdots & i & \cdots & n-1 \\ (\leftarrow )_{j}(\tau (1)) & (\leftarrow )_{j}(\tau (2)) & \cdots & (\leftarrow )_{j}(\tau (i+1)) & \cdots & (\leftarrow )_{j}(\tau (n)) \end{pmatrix}
+$$
+
+onde $$(\leftarrow )_{j}$$ é uma notação temporária para um ciclo $$(n,n-1,\cdots ,j+1,j)$$. Esta operação decrementa todos os índices maiores que $$j$$ para que cada índice se encaixe no conjunto $$\{1,2,...,n-1\}$$.
+
+A permutação $$\tau$$ pode ser derivada de $$\sigma$$ da seguinte maneira. Defina $$\sigma' \in S_{n}$$ por $$\sigma' (k) = \sigma (k)$$ para $$1 \leq k \leq n-1$$ e $$\sigma' (n) = n$$. Então $$\sigma'$$ é expresso como
+
+$$
+\sigma' = \begin{pmatrix} 1 & 2 & \cdots & i & \cdots & n-1 & n \\ (\leftarrow )_{j}(\tau (1)) & (\leftarrow )_{j}(\tau (2)) & \cdots & (\leftarrow )_{j}(\tau (i+1)) & \cdots & (\leftarrow )_{j}(\tau (n)) & n \end{pmatrix}
+$$
+
+Agora, a operação que aplica $$(\leftarrow )_{i}$$ primeiro e depois aplica $$\sigma'$$ é (observe que aplicar A antes de B é equivalente a aplicar o inverso de A à linha superior de B na notação de duas linhas)
+
+$$
+\sigma' (\leftarrow )_{i} = \begin{pmatrix} 1 & 2 & \cdots & i+1 & \cdots & n & i \\ (\leftarrow )_{j}(\tau (1)) & (\leftarrow )_{j}(\tau (2)) & \cdots & (\leftarrow )_{j}(\tau (i+1)) & \cdots & (\leftarrow )_{j}(\tau (n)) & n \end{pmatrix}
+$$
+
+onde $$(\leftarrow )_{i}$$ é uma notação temporária para um ciclo $$(n,n-1,\cdots ,i+1,i)$$.
+
+A operação que aplica $$\tau$$ primeiro e depois aplica $$(\leftarrow )_{j}$$ é
+
+$$
+(\leftarrow )_{j}\tau = \begin{pmatrix} 1 & 2 & \cdots & i & \cdots & n-1 & n \\ (\leftarrow )_{j}(\tau (1)) & (\leftarrow )_{j}(\tau (2)) & \cdots & n & \cdots & (\leftarrow )_{j}(\tau (n-1)) & (\leftarrow )_{j}(\tau (n)) \end{pmatrix}
+$$
+
+As duas operações acima são iguais, portanto,
+
+$$
+(\leftarrow )_{j}\tau = \sigma' (\leftarrow )_{i}
+$$
+$$
+\tau = (\rightarrow )_{j}\sigma' (\leftarrow )_{i}
+$$
+
+onde $$(\rightarrow )_{j}$$ é o inverso de $$(\leftarrow )_{j}$$ que é $$(j,j+1,\cdots ,n)$$.
+
+Assim,
+
+$$
+\tau = (j,j+1,\ldots ,n)\sigma' (n,n-1,\ldots ,i)
+$$
+
+Como os dois ciclos podem ser escritos respectivamente como $$n-i$$ e $$n-j$$ transposições,
+
+$$
+\operatorname{sgn} \tau = (-1)^{2n-(i+j)}\operatorname{sgn} \sigma' = (-1)^{i+j}\operatorname{sgn} \sigma .
+$$
+
+E como o mapa $$\sigma \leftrightarrow \tau$$ é bijetivo,
+
+$$
+\sum _{i=1}^{n}\sum _{\tau \in S_{n}:\tau (i)=j}\operatorname{sgn} \tau \,b_{1,\tau (1)}\cdots b_{n,\tau (n)} = \sum _{i=1}^{n}\sum _{\sigma \in S_{n-1}}(-1)^{i+j}\operatorname{sgn} \sigma \,b_{ij}a_{1,\sigma (1)}\cdots a_{n-1,\sigma (n-1)} = \sum _{i=1}^{n}b_{ij}(-1)^{i+j}\sum _{\sigma \in S_{n-1}}\operatorname{sgn} \sigma \,a_{1,\sigma (1)}\cdots a_{n-1,\sigma (n-1)} = \sum _{i=1}^{n}b_{ij}(-1)^{i+j}M_{ij}
+$$
+
+A partir do qual o resultado segue. Da mesma forma, o resultado se mantém se o índice da soma externa fosse substituído por $$j$$.

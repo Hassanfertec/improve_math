@@ -1,4 +1,4 @@
-# Aprimoramento da Explicação do Problema
+# Agulha de Buffon
 
 O problema propõe a seguinte questão: se uma agulha de comprimento `l` é lançada em um plano com linhas paralelas espaçadas por `t` unidades, qual é a probabilidade de que a agulha cruze uma linha ao cair?
 
